@@ -1,0 +1,54 @@
+create database hari2;
+use hari2;
+create table Book(
+s_no int primary key,
+ Booktitle varchar(50),
+ Author varchar(50),
+ genre varchar(50),
+ publication_year int,
+ price int);
+ 
+ drop table Book;
+ INSERT INto  Book VALUES(1,"Price and prejudice","Jane Austen","Classic",1813,550);
+ INSERT INto  Book VALUES(2,"To kill a Mockingbird","Harper Lee","Fiction",1960,600);
+ INSERT INto  Book VALUES(3,"The Life of Pi","Dystopian","Classic",1949,700);
+ INSERT INto  Book VALUES(4,"The Great Gatsby","F.Scott Fitzgerald","Classic",1925,850);
+ 
+ 
+ 
+
+select * from Book;
+SELECT * FROM Book
+WHERE Booktitle = 'To kill a Mockingbird'; 
+UPDATE Book
+SET price = "1000"
+WHERE price=550;
+
+DELETE from Book
+WHERE Booktitle = "Price and Prejudice";
+
+create table authors(
+se_no int primary key,
+author_age int,
+author_native varchar(50),
+author_name varchar(60),
+s_no int,
+constraint fk_s_no foreign key(s_no) references Book(s_no));
+
+INSERT INTO authors VALUES(1,3,'erode','Ram',2);
+
+drop table authors;
+
+
+
+
+
+
+drop table authors;
+
+
+SELECT *
+FROM authors
+INNER JOIN Book
+ON authors.se_no=Book.s_no
+ORDER BY author_age;
